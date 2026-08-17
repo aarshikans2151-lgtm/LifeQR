@@ -83,12 +83,24 @@ export default function Dashboard() {
 
           <button
             className="dash-card dash-card--emergency"
-            onClick={() => navigate(`/emergency?uid=${currentUser?.userId}`)}
+            onClick={() => {
+              if (!profileComplete) {
+                navigate('/profile')
+              } else {
+                // Encode profile into URL so Emergency Mode works everywhere
+                const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(profile))))
+                navigate(`/emergency?data=${encoded}`)
+              }
+            }}
           >
             <div className="dash-card-icon">🚨</div>
             <div className="dash-card-body">
               <span className="dash-card-title">Emergency Mode</span>
-              <span className="dash-card-sub">Preview your emergency passport</span>
+              <span className="dash-card-sub">
+                {profileComplete
+                  ? 'Preview your emergency passport'
+                  : 'Set up your profile first to use Emergency Mode'}
+              </span>
             </div>
             <span className="dash-card-arrow">›</span>
           </button>
