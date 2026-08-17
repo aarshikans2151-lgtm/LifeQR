@@ -1,0 +1,119 @@
+/* ============================================
+   MEDICAL PROFILE EDITOR
+   ============================================ */
+
+.profile-page {
+  min-height: 100vh;
+  background-color: var(--deep-navy);
+  padding: 1.5rem 1rem 4rem;
+}
+
+.profile-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Header */
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.profile-header-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profile-header-logo .logo-icon {
+  width: 30px;
+  height: 30px;
+  background-color: var(--blood-red);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #fff;
+}
+
+.profile-header-logo .logo-text {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+.profile-header-logo .logo-text span {
+  color: var(--blood-red);
+}
+
+/* Titles */
+.profile-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.profile-subtitle {
+  font-size: 0.88rem;
+  color: #8ab4c2;
+  margin-bottom: 2rem;
+}
+
+/* Sections */
+.profile-section {
+  background-color: var(--dark-teal);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.profile-section-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #4db3cc;
+  margin-bottom: 1.2rem;
+}
+
+/* Two-column row */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 480px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Contact blocks */
+.contact-block {
+  background-color: rgba(6, 24, 38, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.contact-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+/* Save button */
+.profile-save-btn {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  padding: 0.9rem;
+}

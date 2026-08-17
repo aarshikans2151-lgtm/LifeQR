@@ -1,0 +1,88 @@
+/* ============================================
+   AUTH PAGES — Login & Signup
+   ============================================ */
+
+.auth-page {
+  min-height: 100vh;
+  background-color: var(--deep-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.auth-card {
+  background-color: var(--dark-teal);
+  border-radius: var(--radius-lg);
+  padding: 2.4rem 2rem;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: var(--shadow);
+}
+
+.auth-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.8rem;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.auth-logo .logo-icon {
+  width: 36px;
+  height: 36px;
+  background-color: var(--blood-red);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #fff;
+}
+
+.auth-logo .logo-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+.auth-logo .logo-text span {
+  color: var(--blood-red);
+}
+
+.auth-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.auth-subtitle {
+  font-size: 0.88rem;
+  color: #8ab4c2;
+  margin-bottom: 1.8rem;
+}
+
+.auth-switch {
+  text-align: center;
+  font-size: 0.88rem;
+  color: #8ab4c2;
+  margin-bottom: 0.8rem;
+}
+
+.field-hint {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: #5a8a9a;
+  font-size: 0.78rem;
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 1.8rem 1.2rem;
+  }
+}

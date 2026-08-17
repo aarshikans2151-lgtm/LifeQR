@@ -1,0 +1,415 @@
+/* ============================================
+   EMERGENCY MODE
+   ============================================ */
+
+.em-page {
+  min-height: 100vh;
+  background-color: var(--deep-navy);
+  padding: 0;
+}
+
+/* ── Code Gate ───────────────────────────────── */
+
+.em-page--gate {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem 4rem;
+}
+
+.em-gate-inner {
+  max-width: 460px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Emergency banner */
+.em-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: var(--blood-red);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  margin-bottom: 2rem;
+}
+
+.em-banner-cross {
+  font-size: 1rem;
+  color: #fff;
+}
+
+.em-gate-name {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.2rem;
+}
+
+.em-gate-label {
+  font-size: 0.75rem;
+  color: #8ab4c2;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.em-lock-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.em-gate-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.6rem;
+}
+
+.em-gate-desc {
+  font-size: 0.88rem;
+  color: #8ab4c2;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 360px;
+}
+
+.em-code-form {
+  width: 100%;
+  max-width: 360px;
+  margin-bottom: 1.5rem;
+}
+
+.em-code-form .form-group {
+  text-align: left;
+}
+
+.em-code-form input {
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  text-align: center;
+}
+
+.em-gate-disclaimer {
+  font-size: 0.72rem;
+  color: #3a6070;
+  line-height: 1.6;
+  max-width: 340px;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Error screen ────────────────────────────── */
+
+.em-page--error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.em-error-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 2rem;
+  max-width: 380px;
+}
+
+.em-error-icon {
+  font-size: 3rem;
+}
+
+.em-error-inner h2 {
+  color: #fff;
+}
+
+.em-error-inner p {
+  color: #8ab4c2;
+  font-size: 0.92rem;
+}
+
+/* ── Authorized View ─────────────────────────── */
+
+.em-page--authorized {
+  padding: 0;
+}
+
+.em-auth-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 4rem;
+}
+
+/* Authorized header */
+.em-auth-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.em-auth-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--blood-red);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+}
+
+.em-exit-btn {
+  color: #8ab4c2;
+}
+
+/* Demo notice */
+.em-demo-notice {
+  background-color: rgba(255, 64, 64, 0.1);
+  border: 1px solid rgba(255, 64, 64, 0.3);
+  border-radius: var(--radius);
+  padding: 0.6rem 0.9rem;
+  font-size: 0.78rem;
+  color: #ff9a9a;
+  margin-bottom: 1.5rem;
+}
+
+/* Patient header */
+.em-patient-header {
+  background-color: var(--dark-teal);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.em-patient-avatar {
+  width: 52px;
+  height: 52px;
+  background-color: var(--deep-blue-teal);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.em-patient-info {
+  flex: 1;
+}
+
+.em-patient-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.em-patient-meta {
+  font-size: 0.82rem;
+  color: #8ab4c2;
+  margin-top: 0.2rem;
+}
+
+.em-blood-badge {
+  margin-left: auto;
+  background-color: var(--blood-red);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 800;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+
+/* Medical sections */
+.em-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.em-section {
+  background-color: var(--dark-teal);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+}
+
+.em-section--alert {
+  border-left: 3px solid var(--blood-red);
+  background-color: rgba(255, 64, 64, 0.08);
+}
+
+.em-section-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #4db3cc;
+  margin-bottom: 0.5rem;
+}
+
+.em-section--alert .em-section-label {
+  color: #ff9a9a;
+}
+
+.em-section-value {
+  font-size: 0.95rem;
+  color: #e8f0f4;
+  line-height: 1.6;
+}
+
+.em-donor-yes {
+  color: #7de8cc;
+  font-weight: 600;
+}
+
+.em-donor-no {
+  color: #8ab4c2;
+}
+
+/* Emergency contacts */
+.em-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.em-contact {
+  background-color: rgba(6, 24, 38, 0.4);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+}
+
+.em-contact-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.em-contact-rel {
+  font-size: 0.78rem;
+  color: #8ab4c2;
+  margin-bottom: 0.3rem;
+}
+
+.em-contact-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  color: #4db3cc;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.em-contact-phone:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+.em-auth-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: #3a6070;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ── No Profile / Public Entry ───────────────── */
+
+.em-page--noprofile {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem 4rem;
+}
+
+.em-noprofile-inner {
+  max-width: 460px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.em-noprofile-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.em-noprofile-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.6rem;
+}
+
+.em-noprofile-desc {
+  font-size: 0.9rem;
+  color: #8ab4c2;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 360px;
+}
+
+.em-manual-form {
+  width: 100%;
+  max-width: 360px;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.em-noprofile-hint {
+  font-size: 0.75rem;
+  color: #3a6070;
+  margin-bottom: 1.5rem;
+  max-width: 320px;
+  line-height: 1.6;
+}
+
+/* Loading */
+.em-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8ab4c2;
+  font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .em-patient-header {
+    flex-wrap: wrap;
+  }
+
+  .em-blood-badge {
+    margin-left: 0;
+  }
+
+  .em-auth-footer {
+    flex-direction: column;
+    gap: 0.3rem;
+    align-items: center;
+    text-align: center;
+  }
+}

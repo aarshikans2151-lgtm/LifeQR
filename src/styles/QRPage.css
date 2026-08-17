@@ -1,0 +1,305 @@
+/* ============================================
+   QR GENERATION PAGE
+   ============================================ */
+
+.qr-page {
+  min-height: 100vh;
+  background-color: var(--deep-navy);
+  padding: 1.5rem 1rem 4rem;
+}
+
+.qr-inner {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* Header */
+.qr-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.qr-header-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qr-header-logo .logo-icon {
+  width: 30px;
+  height: 30px;
+  background-color: var(--blood-red);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #fff;
+}
+
+.qr-header-logo .logo-text {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+.qr-header-logo .logo-text span {
+  color: var(--blood-red);
+}
+
+/* Titles */
+.qr-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.qr-subtitle {
+  font-size: 0.88rem;
+  color: #8ab4c2;
+  margin-bottom: 2rem;
+}
+
+/* QR Card */
+.qr-card {
+  background-color: var(--dark-teal);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.qr-code-wrap {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  display: inline-flex;
+}
+
+.qr-name-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.qr-sub-label {
+  font-size: 0.75rem;
+  color: #8ab4c2;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* How it works */
+.qr-how {
+  background-color: var(--dark-teal);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.qr-how-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #4db3cc;
+  margin-bottom: 1rem;
+}
+
+.qr-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.qr-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  font-size: 0.88rem;
+  color: #b8d4dc;
+  line-height: 1.5;
+}
+
+.qr-step-num {
+  width: 22px;
+  height: 22px;
+  background-color: var(--deep-blue-teal);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Access code info */
+.qr-code-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  background-color: rgba(255, 64, 64, 0.1);
+  border: 1px solid rgba(255, 64, 64, 0.25);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.88rem;
+  color: #b8d4dc;
+}
+
+.qr-code-info-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.qr-code-info strong {
+  display: block;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.qr-code-info code {
+  background-color: rgba(255, 64, 64, 0.2);
+  color: #ff9a9a;
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-weight: 700;
+}
+
+/* Action buttons */
+.qr-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Profile ID box */
+.qr-id-box {
+  background-color: var(--dark-teal);
+  border-radius: var(--radius-lg);
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.qr-id-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #4db3cc;
+}
+
+.qr-id-value {
+  font-size: 0.78rem;
+  font-family: monospace;
+  color: #e8f0f4;
+  background: rgba(6,24,38,0.5);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  word-break: break-all;
+  letter-spacing: 0.03em;
+}
+
+.qr-id-hint {
+  font-size: 0.78rem;
+  color: #8ab4c2;
+  line-height: 1.5;
+}
+
+/* No profile state */
+.qr-no-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 1rem;
+  gap: 1rem;
+}
+
+.qr-no-profile-icon {
+  font-size: 3rem;
+}
+
+.qr-no-profile h2 {
+  color: #fff;
+}
+
+.qr-no-profile p {
+  color: #8ab4c2;
+  font-size: 0.92rem;
+  max-width: 300px;
+}
+
+/* Print styles */
+@media print {
+  .qr-page {
+    background: #fff !important;
+  }
+
+  .qr-header,
+  .qr-title,
+  .qr-subtitle,
+  .qr-how,
+  .qr-code-info,
+  .qr-actions {
+    display: none !important;
+  }
+
+  .qr-card {
+    background: #fff !important;
+    box-shadow: none !important;
+    border: 2px solid #ccc;
+  }
+
+  .qr-name-label {
+    color: #000 !important;
+  }
+
+  .qr-sub-label {
+    color: #555 !important;
+  }
+
+  .qr-print-only {
+    display: block !important;
+    text-align: center;
+    margin-top: 1rem;
+    color: #000;
+  }
+}
+
+.qr-print-only {
+  display: none;
+}
+
+.qr-print-header {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.qr-print-name {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0.3rem 0;
+}
+
+.qr-print-instruction {
+  font-size: 0.8rem;
+  color: #555;
+  margin-top: 0.4rem;
+}
