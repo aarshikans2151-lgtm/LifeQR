@@ -448,6 +448,30 @@
   background-color: rgba(255, 64, 64, 0.22);
 }
 
+.em-scan-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: var(--dark-teal);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.5rem;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+  width: 100%;
+}
+
+.em-scan-icon {
+  font-size: 3rem;
+}
+
+.em-scan-prompt p {
+  font-size: 0.88rem;
+  color: #8ab4c2;
+  line-height: 1.6;
+  max-width: 300px;
+}
+
 .em-empty {
   color: #4a7a8a;
   font-style: italic;

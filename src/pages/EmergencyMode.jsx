@@ -83,7 +83,7 @@ export default function EmergencyMode() {
   }
 
   // ── No Profile — public entry, no QR scanned ──────────────
-  // Just show the access code entry. No profile ID field.
+  // Show bystander / healthcare choice immediately.
   if (screen === 'no-profile') {
     return (
       <div className="em-page em-page--gate">
@@ -97,29 +97,43 @@ export default function EmergencyMode() {
           <div className="em-noprofile-icon">🚨</div>
           <h2 className="em-gate-title">Emergency Access</h2>
           <p className="em-gate-desc">
-            If you are a healthcare professional, enter your access code below.
-            To access a specific patient's profile, scan their LifeQR code instead.
+            Choose your access level below. To view a specific patient's profile,
+            scan their LifeQR code with your camera.
           </p>
 
-          <form onSubmit={handleCodeSubmit} className="em-code-form">
-            {codeError && <div className="error-msg">{codeError}</div>}
-            <div className="form-group">
-              <label htmlFor="accessCode">Healthcare Access Code</label>
-              <input
-                id="accessCode"
-                type="password"
-                inputMode="numeric"
-                value={codeInput}
-                onChange={e => { setCodeInput(e.target.value); setCodeError('') }}
-                placeholder="Enter access code"
-                autoComplete="off"
-                maxLength={20}
-              />
-            </div>
-            <button type="submit" className="btn btn-emergency">
-              Enter Emergency Mode
+          <div className="em-access-options">
+
+            {/* Bystander */}
+            <button
+              className="em-access-card em-access-card--bystander"
+              onClick={() => setScreen('bystander-noprofile')}
+            >
+              <div className="em-access-card-icon">👤</div>
+              <div className="em-access-card-body">
+                <div className="em-access-card-title">Bystander Access</div>
+                <div className="em-access-card-sub">
+                  Name, insurance and emergency contacts — scan a QR to load a patient
+                </div>
+              </div>
+              <span className="em-access-card-arrow">›</span>
             </button>
-          </form>
+
+            {/* Healthcare */}
+            <button
+              className="em-access-card em-access-card--healthcare"
+              onClick={() => setScreen('code-entry')}
+            >
+              <div className="em-access-card-icon">🏥</div>
+              <div className="em-access-card-body">
+                <div className="em-access-card-title">Healthcare Professional</div>
+                <div className="em-access-card-sub">
+                  Full medical profile — requires access code
+                </div>
+              </div>
+              <span className="em-access-card-arrow">›</span>
+            </button>
+
+          </div>
 
           <div className="em-gate-disclaimer">
             Scan a patient's LifeQR code to access their specific emergency profile.
@@ -128,6 +142,43 @@ export default function EmergencyMode() {
           <button className="btn btn-ghost" onClick={() => navigate('/')}>
             ← Return to Home
           </button>
+        </div>
+      </div>
+    )
+  }
+
+  // ── Bystander with no profile loaded ─────────────────────
+  if (screen === 'bystander-noprofile') {
+    return (
+      <div className="em-page em-page--bystander">
+        <div className="em-auth-inner">
+          <div className="em-auth-header">
+            <div className="em-bystander-banner">
+              <span className="em-banner-cross">✚</span>
+              BYSTANDER ACCESS
+            </div>
+            <button className="btn btn-ghost btn-sm" onClick={() => setScreen('no-profile')}>
+              ✕ Exit
+            </button>
+          </div>
+
+          <div className="em-bystander-notice">
+            No patient profile loaded. Scan a LifeQR code with your camera to load a patient's information.
+          </div>
+
+          <div className="em-scan-prompt">
+            <div className="em-scan-icon">📷</div>
+            <p>Open your phone camera and point it at the patient's LifeQR code to load their bystander information.</p>
+          </div>
+
+          <button className="em-upgrade-btn" onClick={() => setScreen('code-entry')}>
+            🏥 Healthcare professional? Enter access code
+          </button>
+
+          <div className="em-auth-footer">
+            <span>LifeQR Emergency Medical Passport</span>
+            <span>Bystander view</span>
+          </div>
         </div>
       </div>
     )
