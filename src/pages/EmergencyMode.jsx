@@ -489,9 +489,15 @@ export default function EmergencyMode() {
             </div>
           </>
         ) : (
-          <div className="em-section">
-            <div className="em-section-value em-empty">
-              No patient profile loaded. Scan a LifeQR code to access a specific patient.
+          /* No profile loaded — access granted but no QR scanned yet */
+          <div className="em-authorized-noprofile">
+            <div className="em-authorized-check">✓</div>
+            <h3>Access Granted</h3>
+            <p>You are authorized as a healthcare professional.</p>
+            <p>To view a patient's full medical profile, scan their LifeQR code with your camera.</p>
+            <div className="em-scan-prompt" style={{ marginTop: '1.5rem' }}>
+              <div className="em-scan-icon">📷</div>
+              <p>Point your camera at a patient's LifeQR code to load their complete medical profile.</p>
             </div>
           </div>
         )}
