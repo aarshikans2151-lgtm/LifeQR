@@ -334,6 +334,131 @@
   border-top: 1px solid rgba(255,255,255,0.06);
 }
 
+/* ── Access Option Cards ─────────────────────── */
+
+.em-access-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  width: 100%;
+  max-width: 380px;
+  margin-bottom: 1.5rem;
+}
+
+.em-access-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid rgba(255,255,255,0.08);
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: transform var(--transition), filter var(--transition);
+}
+
+.em-access-card:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.em-access-card--bystander {
+  background-color: var(--deep-blue-teal);
+}
+
+.em-access-card--healthcare {
+  background-color: var(--blood-red);
+}
+
+.em-access-card-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.em-access-card-body {
+  flex: 1;
+}
+
+.em-access-card-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.2rem;
+}
+
+.em-access-card-sub {
+  font-size: 0.76rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.4;
+}
+
+.em-access-card-arrow {
+  font-size: 1.4rem;
+  color: rgba(255,255,255,0.5);
+  flex-shrink: 0;
+}
+
+/* ── Bystander View ──────────────────────────── */
+
+.em-page--bystander {
+  padding: 0;
+}
+
+.em-bystander-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--deep-blue-teal);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+}
+
+.em-bystander-notice {
+  background-color: rgba(18, 72, 90, 0.5);
+  border: 1px solid var(--deep-blue-teal);
+  border-radius: var(--radius);
+  padding: 0.6rem 0.9rem;
+  font-size: 0.78rem;
+  color: #8ab4c2;
+  margin-bottom: 1.5rem;
+}
+
+.em-upgrade-btn {
+  width: 100%;
+  background-color: rgba(255, 64, 64, 0.12);
+  border: 1px solid rgba(255, 64, 64, 0.3);
+  border-radius: var(--radius);
+  color: #ff9a9a;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.85rem;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  transition: background-color var(--transition);
+}
+
+.em-upgrade-btn:hover {
+  background-color: rgba(255, 64, 64, 0.22);
+}
+
+.em-empty {
+  color: #4a7a8a;
+  font-style: italic;
+  font-size: 0.88rem;
+}
+
+.em-noprofile-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
 /* ── No Profile / Public Entry ───────────────── */
 
 .em-page--noprofile {
