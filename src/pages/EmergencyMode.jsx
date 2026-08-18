@@ -66,15 +66,23 @@ export default function EmergencyMode() {
     setScreen('no-profile')
   }, [searchParams, currentUser])
 
+  // Store the resolved profile separately so we can pass it directly
+  // without relying on async state updates
+  const [resolvedProfile, setResolvedProfile] = useState(null)
+
   function handleCodeSubmit(e) {
     e.preventDefault()
     if (codeInput === DEMO_CODE) {
-      // If no profile loaded yet, try to find one saved on this device
-      if (!profile) {
+      let activeProfile = profile
+      if (!activeProfile) {
         const allProfiles = getAllProfiles()
         if (allProfiles.length > 0) {
-          setProfile(allProfiles[0])
+          activeProfile = allProfiles[0]
+          setProfile(activeProfile)
+          setResolvedProfile(activeProfile)
         }
+      } else {
+        setResolvedProfile(profile)
       }
       setScreen('authorized')
       setCodeError('')
@@ -415,7 +423,8 @@ export default function EmergencyMode() {
   }
 
   // ── Authorized Healthcare View ────────────────────────────
-  const age = profile ? calcAge(profile.dob) : null
+  const displayProfile = resolvedProfile || profile
+  const age = displayProfile ? calcAge(displayProfile.dob) : null
 
   return (
     <div className="em-page em-page--authorized">
@@ -426,7 +435,7 @@ export default function EmergencyMode() {
             <span className="em-banner-cross">✚</span>
             AUTHORIZED HEALTHCARE ACCESS
           </div>
-          <button className="btn btn-ghost btn-sm em-exit-btn" onClick={() => setScreen(profile ? 'gate' : 'no-profile')}>
+          <button className="btn btn-ghost btn-sm em-exit-btn" onClick={() => setScreen(displayProfile ? 'gate' : 'no-profile')}>
             ✕ Exit
           </button>
         </div>
@@ -435,62 +444,62 @@ export default function EmergencyMode() {
           ⚠ Demo access code used. A real system would require verified healthcare professional authentication.
         </div>
 
-        {profile ? (
+        {displayProfile ? (
           <>
             <div className="em-patient-header">
               <div className="em-patient-avatar">
-                {(profile.name || 'U')[0].toUpperCase()}
+                {(displayProfile.name || 'U')[0].toUpperCase()}
               </div>
               <div className="em-patient-info">
-                <div className="em-patient-name">{profile.name || '—'}</div>
+                <div className="em-patient-name">{displayProfile.name || '—'}</div>
                 <div className="em-patient-meta">
-                  {profile.dob && <span>DOB: {new Date(profile.dob).toLocaleDateString()}</span>}
+                  {displayProfile.dob && <span>DOB: {new Date(displayProfile.dob).toLocaleDateString()}</span>}
                   {age !== null && <span> · Age: {age}</span>}
                 </div>
               </div>
-              {profile.bloodGroup && (
-                <div className="em-blood-badge">{profile.bloodGroup}</div>
+              {displayProfile.bloodGroup && (
+                <div className="em-blood-badge">{displayProfile.bloodGroup}</div>
               )}
             </div>
 
             <div className="em-sections">
-              {profile.conditions && (
+              {displayProfile.conditions && (
                 <div className="em-section">
                   <div className="em-section-label">Medical Conditions</div>
-                  <div className="em-section-value">{profile.conditions}</div>
+                  <div className="em-section-value">{displayProfile.conditions}</div>
                 </div>
               )}
-              {profile.allergies && (
+              {displayProfile.allergies && (
                 <div className="em-section em-section--alert">
                   <div className="em-section-label">⚠ Allergies</div>
-                  <div className="em-section-value">{profile.allergies}</div>
+                  <div className="em-section-value">{displayProfile.allergies}</div>
                 </div>
               )}
-              {profile.medications && (
+              {displayProfile.medications && (
                 <div className="em-section">
                   <div className="em-section-label">Current Medications</div>
-                  <div className="em-section-value">{profile.medications}</div>
+                  <div className="em-section-value">{displayProfile.medications}</div>
                 </div>
               )}
-              {profile.surgeries && (
+              {displayProfile.surgeries && (
                 <div className="em-section">
                   <div className="em-section-label">Previous Surgeries</div>
-                  <div className="em-section-value">{profile.surgeries}</div>
+                  <div className="em-section-value">{displayProfile.surgeries}</div>
                 </div>
               )}
-              {profile.organDonor && profile.organDonor !== 'Not specified' && (
+              {displayProfile.organDonor && displayProfile.organDonor !== 'Not specified' && (
                 <div className="em-section">
                   <div className="em-section-label">Organ Donor</div>
-                  <div className={`em-section-value em-donor-${profile.organDonor.toLowerCase()}`}>
-                    {profile.organDonor === 'Yes' ? '✓ Registered organ donor' : '✗ Not an organ donor'}
+                  <div className={`em-section-value em-donor-${displayProfile.organDonor.toLowerCase()}`}>
+                    {displayProfile.organDonor === 'Yes' ? '✓ Registered organ donor' : '✗ Not an organ donor'}
                   </div>
                 </div>
               )}
-              {profile.emergencyContacts?.some(c => c.name) && (
+              {displayProfile.emergencyContacts?.some(c => c.name) && (
                 <div className="em-section">
                   <div className="em-section-label">Emergency Contacts</div>
                   <div className="em-contacts">
-                    {profile.emergencyContacts.filter(c => c.name).map((c, i) => (
+                    {displayProfile.emergencyContacts.filter(c => c.name).map((c, i) => (
                       <div key={i} className="em-contact">
                         <div className="em-contact-name">{c.name}</div>
                         <div className="em-contact-rel">{c.relationship}</div>
@@ -502,19 +511,18 @@ export default function EmergencyMode() {
                   </div>
                 </div>
               )}
-              {(profile.insuranceProvider || profile.insurancePolicyNumber) && (
+              {(displayProfile.insuranceProvider || displayProfile.insurancePolicyNumber) && (
                 <div className="em-section">
                   <div className="em-section-label">Health Insurance</div>
                   <div className="em-section-value">
-                    {profile.insuranceProvider && <div><strong>Provider:</strong> {profile.insuranceProvider}</div>}
-                    {profile.insurancePolicyNumber && <div><strong>Policy:</strong> {profile.insurancePolicyNumber}</div>}
+                    {displayProfile.insuranceProvider && <div><strong>Provider:</strong> {displayProfile.insuranceProvider}</div>}
+                    {displayProfile.insurancePolicyNumber && <div><strong>Policy:</strong> {displayProfile.insurancePolicyNumber}</div>}
                   </div>
                 </div>
               )}
             </div>
           </>
         ) : (
-          /* No profile loaded — access granted but no QR scanned yet */
           <div className="em-authorized-noprofile">
             <div className="em-authorized-check">✓</div>
             <h3>Access Granted</h3>
