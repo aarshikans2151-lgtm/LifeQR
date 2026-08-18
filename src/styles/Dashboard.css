@@ -221,3 +221,81 @@
   color: #3a6070;
   letter-spacing: 0.03em;
 }
+
+/* ── Greeting row with photo ── */
+.dash-greeting-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dash-profile-photo {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--deep-blue-teal);
+  flex-shrink: 0;
+}
+
+.dash-profile-initial {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--deep-blue-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+/* ── Logout confirmation modal ── */
+.logout-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 24, 38, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
+}
+
+.logout-modal {
+  background-color: var(--dark-teal);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  max-width: 360px;
+  width: 100%;
+  box-shadow: var(--shadow);
+  text-align: center;
+  animation: fadeInUp 0.2s ease;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.logout-modal h3 {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 0.6rem;
+}
+
+.logout-modal p {
+  font-size: 0.88rem;
+  color: #8ab4c2;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.logout-modal-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}

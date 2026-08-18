@@ -288,7 +288,7 @@ export default function EmergencyMode() {
               <span className="em-banner-cross">✚</span>
               BYSTANDER ACCESS
             </div>
-            <button className="btn btn-ghost btn-sm" onClick={() => setScreen('gate')}>
+            <button className="btn btn-ghost btn-sm" onClick={() => setScreen(profile ? 'gate' : 'no-profile')}>
               ✕ Exit
             </button>
           </div>
@@ -299,9 +299,13 @@ export default function EmergencyMode() {
 
           {/* Patient name */}
           <div className="em-patient-header">
-            <div className="em-patient-avatar">
-              {(profile.name || 'U')[0].toUpperCase()}
-            </div>
+            {profile.photo ? (
+              <img src={profile.photo} alt={profile.name} className="em-patient-photo" />
+            ) : (
+              <div className="em-patient-avatar">
+                {(profile.name || 'U')[0].toUpperCase()}
+              </div>
+            )}
             <div className="em-patient-info">
               <div className="em-patient-name">{profile.name || '—'}</div>
               <div className="em-patient-meta">LifeQR Emergency Passport</div>
@@ -447,9 +451,13 @@ export default function EmergencyMode() {
         {displayProfile ? (
           <>
             <div className="em-patient-header">
-              <div className="em-patient-avatar">
-                {(displayProfile.name || 'U')[0].toUpperCase()}
-              </div>
+              {displayProfile.photo ? (
+                <img src={displayProfile.photo} alt={displayProfile.name} className="em-patient-photo" />
+              ) : (
+                <div className="em-patient-avatar">
+                  {(displayProfile.name || 'U')[0].toUpperCase()}
+                </div>
+              )}
               <div className="em-patient-info">
                 <div className="em-patient-name">{displayProfile.name || '—'}</div>
                 <div className="em-patient-meta">
