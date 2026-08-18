@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext.jsx'
-import { getProfile } from '../utils/storage.js'
+import { getProfile, getAllProfiles } from '../utils/storage.js'
 import '../styles/EmergencyMode.css'
 
 const DEMO_CODE = '12345678'
@@ -69,6 +69,13 @@ export default function EmergencyMode() {
   function handleCodeSubmit(e) {
     e.preventDefault()
     if (codeInput === DEMO_CODE) {
+      // If no profile loaded yet, try to find one saved on this device
+      if (!profile) {
+        const allProfiles = getAllProfiles()
+        if (allProfiles.length > 0) {
+          setProfile(allProfiles[0])
+        }
+      }
       setScreen('authorized')
       setCodeError('')
     } else {
@@ -106,7 +113,19 @@ export default function EmergencyMode() {
             {/* Bystander */}
             <button
               className="em-access-card em-access-card--bystander"
-              onClick={() => setScreen('bystander-noprofile')}
+              onClick={() => {
+                if (!profile) {
+                  const allProfiles = getAllProfiles()
+                  if (allProfiles.length > 0) {
+                    setProfile(allProfiles[0])
+                    setScreen('bystander')
+                  } else {
+                    setScreen('bystander-noprofile')
+                  }
+                } else {
+                  setScreen('bystander')
+                }
+              }}
             >
               <div className="em-access-card-icon">👤</div>
               <div className="em-access-card-body">
@@ -121,7 +140,13 @@ export default function EmergencyMode() {
             {/* Healthcare */}
             <button
               className="em-access-card em-access-card--healthcare"
-              onClick={() => setScreen('code-entry')}
+              onClick={() => {
+                if (!profile) {
+                  const allProfiles = getAllProfiles()
+                  if (allProfiles.length > 0) setProfile(allProfiles[0])
+                }
+                setScreen('code-entry')
+              }}
             >
               <div className="em-access-card-icon">🏥</div>
               <div className="em-access-card-body">

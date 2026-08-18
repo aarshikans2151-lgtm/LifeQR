@@ -69,6 +69,17 @@ export function saveProfile(userId, profile) {
   localStorage.setItem(KEYS.profile(userId), JSON.stringify(profile))
 }
 
+// Get all profiles stored on this device
+export function getAllProfiles() {
+  const accounts = getAccounts()
+  const profiles = []
+  for (const account of accounts) {
+    const profile = getProfile(account.userId)
+    if (profile) profiles.push(profile)
+  }
+  return profiles
+}
+
 // ── Account lookup by userId ───────────────────────────────
 
 export function findAccountById(userId) {
