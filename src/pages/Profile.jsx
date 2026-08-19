@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext.jsx'
 import { getProfile, saveProfile } from '../utils/storage.js'
@@ -21,7 +21,6 @@ function emptyProfile(name) {
     emergencyContacts: [{ ...EMPTY_CONTACT }],
     insuranceProvider: '',
     insurancePolicyNumber: '',
-    photo: null,
     updatedAt: null,
   }
 }
@@ -29,7 +28,6 @@ function emptyProfile(name) {
 export default function Profile() {
   const navigate = useNavigate()
   const { currentUser } = useAuth()
-  const photoInputRef = useRef(null)
 
   const [form, setForm] = useState(() => {
     const existing = getProfile(currentUser?.userId)
@@ -67,22 +65,6 @@ export default function Profile() {
       ...f,
       emergencyContacts: f.emergencyContacts.filter((_, i) => i !== index)
     }))
-  }
-
-  // ── Photo upload ──────────────────────────────────────────
-  function handlePhotoChange(e) {
-    const file = e.target.files[0]
-    if (!file) return
-    const reader = new FileReader()
-    reader.onloadend = () => {
-      setForm(f => ({ ...f, photo: reader.result }))
-    }
-    reader.readAsDataURL(file)
-  }
-
-  function removePhoto() {
-    setForm(f => ({ ...f, photo: null }))
-    if (photoInputRef.current) photoInputRef.current.value = ''
   }
 
   // ── Validation ────────────────────────────────────────────
@@ -161,38 +143,6 @@ export default function Profile() {
         )}
 
         <form onSubmit={handleSave} noValidate>
-
-          {/* ── Photo ── */}
-          <section className="profile-section">
-            <h3 className="profile-section-title">Profile Photo</h3>
-            <div className="photo-upload-area">
-              {form.photo ? (
-                <div className="photo-preview-wrap">
-                  <img src={form.photo} alt="Profile" className="photo-preview" />
-                  <button type="button" className="photo-remove-btn" onClick={removePhoto}>
-                    ✕ Remove
-                  </button>
-                </div>
-              ) : (
-                <button
-                  type="button"
-                  className="photo-upload-btn"
-                  onClick={() => photoInputRef.current?.click()}
-                >
-                  <span className="photo-upload-icon">📷</span>
-                  <span>Upload Photo</span>
-                  <span className="photo-upload-hint">Optional — shown on emergency passport</span>
-                </button>
-              )}
-              <input
-                ref={photoInputRef}
-                type="file"
-                accept="image/*"
-                onChange={handlePhotoChange}
-                style={{ display: 'none' }}
-              />
-            </div>
-          </section>
 
           {/* ── Basic Info ── */}
           <section className="profile-section">

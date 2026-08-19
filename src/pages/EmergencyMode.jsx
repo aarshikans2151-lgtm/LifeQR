@@ -299,13 +299,9 @@ export default function EmergencyMode() {
 
           {/* Patient name */}
           <div className="em-patient-header">
-            {profile.photo ? (
-              <img src={profile.photo} alt={profile.name} className="em-patient-photo" />
-            ) : (
-              <div className="em-patient-avatar">
-                {(profile.name || 'U')[0].toUpperCase()}
-              </div>
-            )}
+            <div className="em-patient-avatar">
+              {(profile.name || 'U')[0].toUpperCase()}
+            </div>
             <div className="em-patient-info">
               <div className="em-patient-name">{profile.name || '—'}</div>
               <div className="em-patient-meta">LifeQR Emergency Passport</div>
@@ -451,13 +447,9 @@ export default function EmergencyMode() {
         {displayProfile ? (
           <>
             <div className="em-patient-header">
-              {displayProfile.photo ? (
-                <img src={displayProfile.photo} alt={displayProfile.name} className="em-patient-photo" />
-              ) : (
-                <div className="em-patient-avatar">
-                  {(displayProfile.name || 'U')[0].toUpperCase()}
-                </div>
-              )}
+              <div className="em-patient-avatar">
+                {(displayProfile.name || 'U')[0].toUpperCase()}
+              </div>
               <div className="em-patient-info">
                 <div className="em-patient-name">{displayProfile.name || '—'}</div>
                 <div className="em-patient-meta">

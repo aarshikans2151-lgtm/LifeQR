@@ -60,13 +60,9 @@ export default function Dashboard() {
         {/* Greeting with optional photo */}
         <div className="dash-greeting">
           <div className="dash-greeting-row">
-            {profile?.photo ? (
-              <img src={profile.photo} alt="Profile" className="dash-profile-photo" />
-            ) : (
-              <div className="dash-profile-initial">
-                {(currentUser?.name || 'U')[0].toUpperCase()}
-              </div>
-            )}
+            <div className="dash-profile-initial">
+              {(currentUser?.name || 'U')[0].toUpperCase()}
+            </div>
             <div>
               <h1>Hello, {currentUser?.name?.split(' ')[0]} 👋</h1>
               <p className="dash-greeting-sub">Your Emergency Medical Passport</p>
